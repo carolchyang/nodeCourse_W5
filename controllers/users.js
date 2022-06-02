@@ -4,9 +4,6 @@ const User = require("../models/user");
 
 const users = {
   async getUsers(req, res, next) {
-    /**
-     * #swagger.tags = ["Users - 使用者"]
-     */
     const users = await User.find();
     resSuccess(res, users);
   },
