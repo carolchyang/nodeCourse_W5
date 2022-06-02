@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "278755da-9164-4537-bf00-50cd9eaaba19",
+		"name": "W5 Heroku nodeCourse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9557023"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "取得所有貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/posts?page=1&sort=asc&q=",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "q",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一貼文",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/post/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981e5f73de4afd453ed560"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增貼文",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"貼文內容3\",\r\n    \"image\": \"https://images.unsplash.com/photo-1618988727281-8d54f5d32932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1177&q=80\",\r\n    \"user\": \"62981e21d547055dd1e13a35\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/post",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改貼文",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://images.unsplash.com/photo-1653380399372-4cfa7cfcfab9\",\r\n    \"content\": \"修改貼文內容\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/post/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981e5f73de4afd453ed560"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除全部貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單一貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/post/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981e5f73de4afd453ed560"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "取得所有用戶",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一用戶",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/user/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981370d547055dd1e13a31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增用戶",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"carol\",\r\n    \"avatar\": \"https://images.unsplash.com/photo-1618988727281-8d54f5d32932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1177&q=80\",\r\n    \"email\": \"carol@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/user",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改用戶",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"修改1carol\",\r\n    \"gender\": \"female\",\r\n    \"avatar\": \"https://images.unsplash.com/photo-1618988727281-8d54f5d32932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1177&q=80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/user/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981370d547055dd1e13a31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單一用戶",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/user/:id",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62981370d547055dd1e13a31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除全部用戶",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://lit-falls-87355.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"lit-falls-87355",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
