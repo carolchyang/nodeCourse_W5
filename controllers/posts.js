@@ -1,5 +1,5 @@
 const resSuccess = require("../service/resSuccess");
-const resErrors = require("../service/resErrors");
+const appError = require("../service/appError");
 const Post = require("../models/post");
 
 const posts = {
@@ -57,7 +57,7 @@ const posts = {
     // 驗證此 ID 使否存在
     const isExist = await Post.findById(id).exec();
     if (!isExist) {
-      return next(appError(400, "刪除失敗，查無此貼文 ID"));
+      return next(appError(400, "刪除失敗，查無此貼文 ID"), next);
     }
 
     const post = await Post.findOne({ _id: id }).populate({
@@ -65,12 +65,17 @@ const posts = {
       select: "name photo",
     });
     if (!post) {
-      return next(appError(400, "取得失敗，查無此貼文 ID"));
+      return next(appError(400, "取得失敗，查無此貼文 ID"), next);
     }
     resSuccess(res, post);
   },
   async createPost(req, res, next) {
     const { user, image, content } = req.body;
+
+    if (content == "") {
+      return next(appError(400, "新增失敗，貼文內容必須填寫"), next);
+    }
+
     const newPost = await Post.create({
       user,
       image,
@@ -85,7 +90,11 @@ const posts = {
     // 驗證此 ID 使否存在
     const isExist = await Post.findById(id).exec();
     if (!isExist) {
-      return next(appError(400, "刪除失敗，查無此貼文 ID"));
+      return next(appError(400, "刪除失敗，查無此貼文 ID"), next);
+    }
+
+    if (content == "") {
+      return next(appError(400, "刪除失敗，貼文內容必須填寫"), next);
     }
 
     const newPost = await Post.findByIdAndUpdate(
@@ -99,7 +108,7 @@ const posts = {
       }
     );
     if (!newPost) {
-      return next(appError(400, "更新失敗，查無此貼文 ID"));
+      return next(appError(400, "更新失敗，查無此貼文 ID"), next);
     }
     resSuccess(res, newPost);
   },
@@ -109,14 +118,14 @@ const posts = {
     // 驗證此 ID 使否存在
     const isExist = await Post.findById(id).exec();
     if (!isExist) {
-      return next(appError(400, "刪除失敗，查無此貼文 ID"));
+      return next(appError(400, "刪除失敗，查無此貼文 ID"), next);
     }
 
     const delPost = await Post.findByIdAndDelete(id, {
       new: true,
     });
     if (!delPost) {
-      return next(appError(400, "刪除失敗，查無此貼文 ID"));
+      return next(appError(400, "刪除失敗，查無此貼文 ID"), next);
     }
     resSuccess(res, delPost);
   },

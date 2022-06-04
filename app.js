@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
   if (err.name === "CastError") {
     err.isOperational = true;
     err.statusCode = 400;
-    err.message = "查無此 ID，請重新確認！";
+    err.message = "格示錯誤，請重新確認！";
     return resErrorProd(err, res);
   }
 

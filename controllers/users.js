@@ -11,7 +11,7 @@ const users = {
     const { id } = req.params;
     const user = await User.findOne({ _id: id });
     if (!user) {
-      return next(appError(400, "取得失敗，查無此用戶 ID"));
+      return next(appError(400, "取得失敗，查無此用戶 ID"), next);
     }
     resSuccess(res, user);
   },
@@ -32,7 +32,7 @@ const users = {
     // 驗證此 ID 使否存在
     const isExist = await User.findById(id).exec();
     if (!isExist) {
-      return next(appError(400, "刪除失敗，查無此用戶 ID"));
+      return next(appError(400, "刪除失敗，查無此用戶 ID"), next);
     }
 
     const newUser = await User.findByIdAndUpdate(
@@ -48,7 +48,7 @@ const users = {
       }
     );
     if (!newUser) {
-      return next(appError(400, "更新失敗，查無此用戶 ID"));
+      return next(appError(400, "更新失敗，查無此用戶 ID"), next);
     }
     resSuccess(res, newUser);
   },
@@ -58,14 +58,14 @@ const users = {
     // 驗證此 ID 使否存在
     const isExist = await User.findById(id);
     if (!isExist) {
-      return next(appError(400, "刪除失敗，查無此用戶 ID"));
+      return next(appError(400, "刪除失敗，查無此用戶 ID"), next);
     }
 
     const delUser = await User.findByIdAndDelete(id, {
       new: true,
     });
     if (!delUser) {
-      return next(appError(400, "刪除失敗，查無此用戶 ID"));
+      return next(appError(400, "刪除失敗，查無此用戶 ID"), next);
     }
     resSuccess(res, delUser);
   },
